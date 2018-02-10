@@ -1,0 +1,27 @@
+extends layout/layout.pug
+block args
+    - var title = 'Chords'
+    - var onLoadFunc = ', chordNeckStart()'
+block CONTENT
+    div.content
+        h2 Chords training
+        p.pageDesc= footerDesc
+        div.btn-panel
+            button#minimize-btn.btn.selector-panel-btn(state= 1, onclick='toggle_details()') Maximize all
+        div.neckContainer
+            - var majorScales = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
+            - var minorScales = ['Am', 'A#m', 'Bm', 'Cm', 'C#m', 'Dm', 'D#m', 'Em', 'Fm', 'F#m', 'Gm', 'G#m']
+            h2 Major Scales:
+            each val in majorScales
+                details.neckBoard
+                    summary.spoiler-title= val
+                    h3= "Chords in key of " + val + " major"
+                    div(id=val)
+            br
+            br
+            h2 Minor Scales:
+            each val in minorScales
+                details.neckBoard
+                    summary.spoiler-title= val
+                    h3= "Chords in key of " + val.slice(0, -1) + " minor"
+                    div(id=val)

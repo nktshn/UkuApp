@@ -1,0 +1,31 @@
+extends layout/layout.pug
+block args
+    - var title = 'Positions'
+    - var notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+    - var onLoadFunc = ', NECK_START()'
+block CONTENT
+    div.content
+        h2 Positions training
+        p.pageDesc= footerDesc
+        div.scale-selector
+            - for (var x = 0; x < 12; x++)
+              div.checkbox
+                input(class='scale-checkbox', type='checkbox', name='scale'+x, value = notes[x], onclick='show()')
+                span(class='scale-checkbox-label')=notes[x]
+            div.btn-panel
+                button.btn.selector-panel-btn(onclick='clearNotes()') Clear Notes
+                button.btn.selector-panel-btn(onclick='selectAll()') Select all
+
+        script.
+            function show() {
+                var cs = document.getElementsByClassName('scale-checkbox');
+                for (var y = 0; y < cs.length; y++) {
+                    if (cs[y].checked) {
+                        showNotes(cs[y].value);
+                    } else {
+                        hideNotes(cs[y].value);
+                    }
+                }
+            }
+        //button(type='button', onclick='show()') Show note
+        include layout/neck

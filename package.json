@@ -1,0 +1,24 @@
+{
+  "name": "ukulele-app",
+  "version": "1.0.0",
+  "description": "ukulele training app",
+  "main": "layout.html",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "me",
+  "license": "no",
+  "devDependencies": {
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-concat-css": "^3.0.0",
+    "gulp-pug": "^3.3.0",
+    "gulp-sass": "^3.1.0",
+    "pug": "^2.0.0-rc.4"
+  },
+  "dependencies": {
+    "gulp-javascript-obfuscator": "^1.1.4"
+  }
+}

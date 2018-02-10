@@ -1,0 +1,29 @@
+doctype html
+html(lang='en')
+    head
+        include VARS
+        block args
+        title= title + " | Ukulele App"
+        link(rel='stylesheet', href='./styles/style.css')
+        script(src='./scripts/all.js')
+    body(onload=('menuHighlighting(' + "'" + title + "'" + ')' + onLoadFunc))
+        main
+            header
+                div.logo
+                    img(src="./images/logo.png", alt="logo", height=70, width=70)
+                a.logotext-link(href='/')
+                    span.logotext Ukulele app
+            nav
+                ul
+                    a(href= '/'): li(name='navli')= 'Home'
+                    each val in menuItems
+                        a(href= val.replace(' ', '-') + '.html'): li(name='navli')= val
+
+            div.wrap
+                block CONTENT
+        footer
+            div.footer-content
+                div.footer-content-info
+                    p.footer-text=footerDesc
+                div.footer-content-info
+                    p.footer-text=footerDesc

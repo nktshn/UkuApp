@@ -1,0 +1,71 @@
+@mixin boxShadow
+  box-shadow: 0 0 15px -2px grey
+
+.neck
+  border: 1px grey solid
+  background-color: #404040
+  width: 800px
+  margin: 30px 100px
+  position: relative
+  @include boxShadow
+.str
+  height: 5px
+  background-color: #ecece1
+  margin-top: 30px
+  margin-bottom: 30px
+  @include boxShadow
+.lad
+  top: 0
+  position: absolute
+  height: 171px
+  width: 4px
+  background-color: #dfc59c
+  margin-left: 40px
+.point
+  height: 20px
+  width: 20px
+  background-color: white
+  display: inline-block
+  border-radius: 50%
+  border: 1px grey solid
+  position: absolute
+  top: 74px
+.point0
+  left: 306px
+.point1
+  left: 446px
+
+.noteText
+  color: white
+  font-size: 20px
+  text-shadow: 1px 1px 1px #0d0d0d, 0 0 1px #000000
+  border-radius: 50%
+  width: 29px
+  padding-left: 8px
+  position: absolute
+  left: -8px
+  text-align: center
+  top: 3px
+
+.noteBorder:hover
+  cursor: pointer
+.noteBorder
+  height: 30px
+  width: 30px
+  border-radius: 50%
+  opacity: 0
+  background-color: #c0becb
+
+.whatIsBeforeNeck
+  position: absolute
+  border-left: 1px #b1b1b1 solid
+  border-bottom: 1px #b1b1b1 solid
+  border-top: 1px #b1b1b1 solid
+  border-top-left-radius: 20px
+  height: 100%
+  width: 70px
+  left: -70px
+  border-bottom-left-radius: 20px
+  top: -1px
+  background-color: #404040
+  @include boxShadow

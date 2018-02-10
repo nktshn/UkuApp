@@ -1,0 +1,255 @@
+//global vars:
+$color1: #f2f6fb
+$color2: #A2AAB0
+$color3: #444440
+$color4: #ececec
+$color5: #495970
+$font: "SF UI  Text Light", monospace
+
+@mixin boxShadow
+  box-shadow: 0 0 15px -2px grey
+@mixin textShadow
+  text-shadow: 0 0 11px #f5f5f5, 0 0 7px #a7a7a7
+
+body
+  margin: 0
+  padding: 0
+  font-family: $font
+
+header
+  background-color: $color5
+  height: 70px
+  display: flex
+
+nav
+  opacity: 0.8
+  position: relative
+  z-index: 100
+  box-shadow: 1px 1px 5px grey
+  background-color: $color4
+  border: 1px $color2 solid
+
+nav, nav ul
+  list-style-type: none
+
+ul, p
+  padding: 0
+  margin: 0
+
+nav li
+  display: inline-block
+  list-style-type: none
+  background-color: $color4
+nav li:hover
+  background-color: $color1
+
+a
+  display: block
+  cursor: pointer
+  text-decoration: none
+  color: $color3
+  text-shadow: 1px 1px 2px $color2
+
+nav a
+  display: inline-block
+
+nav li
+  min-width: 80px
+  text-align: center
+  padding: 10px 10px 10px 10px
+  border-right: 1px $color2 solid
+
+h2
+  padding: 0 0 40px 45px
+  margin: 0
+  color: $color3
+
+h3
+  margin: 10px 40px 10px 40px
+  color: $color3
+
+h2, h3
+  @include textShadow
+.pageDesc
+  padding: 0 40px 40px 40px
+  margin: 0
+  color: $color3
+  text-align: justify
+  font-size: 18px
+  text-indent: 45px
+
+$footerHeight: 250px
+footer
+  height: 250px
+  background-color: $color5
+
+main
+  margin-bottom: 50px
+  min-height: calc(100vh - #{$footerHeight})
+
+.wrap
+  @include boxShadow
+  padding: 0
+  width: 1000px
+  margin: 0 auto
+  outline: 1px $color2 solid
+
+
+.logo
+  display: inline-block
+  margin: 0 0 0 20px
+
+.logotext
+  color: $color4
+  font-size: 48px
+
+.logotext:hover
+  @include textShadow
+  cursor: pointer
+
+.logotext-link
+  display: inline
+  padding-top: 7px
+
+.content
+  padding: 40px 30px 60px 30px
+  background-color: $color4
+  min-height: 60vh
+  background: $color1 url('../images/background.jpg') -390px -410px no-repeat
+  background-size: 2000px 2000px
+
+.desc
+  font-size: 36px
+  text-align: center
+  color: $color3
+  padding: 40px 0 70px 0
+
+.menu
+  display: flex
+  justify-content: space-between
+  flex-flow: row wrap
+  margin: auto
+  width: 830px
+
+.menu-item , .menu-item-hover-block
+  height: 220px
+  width: 200px
+  border: 1px $color2 solid
+  margin-bottom: 40px
+  @include boxShadow
+
+.menu-item
+  position: relative
+  background-color: $color1
+.menu-item-link
+  margin: 0 20px 0 20px
+
+.menu-item-title
+  display: block
+  text-align: center
+  border-bottom: 1px $color2 solid
+.menu-img
+  display: block
+
+.menu-item-hover-block
+  position: absolute
+  border: 0
+  background-color: white
+  opacity: 0
+.menu-item-hover-block:hover
+  opacity: 0.35
+
+.checkbox
+  display: inline-block
+  position: relative
+  margin-right: 15px
+
+.scale-selector
+  width: 600px
+  margin: auto
+  display: block
+  padding-bottom: 30px
+
+.scale-checkbox
+  -webkit-appearance: none
+  background-color: #fafafa
+  border: 1px solid #cacece
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05)
+  padding: 13px
+  border-radius: 50%
+  display: inline-block
+  position: relative
+
+.scale-checkbox:checked
+  background-color: $color5
+  border: 1px solid #adb8c0
+  box-shadow: inset 0 0 1px 3px white
+
+.scale-checkbox:hover
+  cursor: pointer
+.scale-checkbox-label
+  position: absolute
+  top: 32px
+  left: 0
+  width: 35px
+  text-align: center
+  color: $color3
+
+.btn
+  background-color: whitesmoke
+  border: 1px #cdc7c7 solid
+  border-radius: 3px
+  height: 30px
+  color: #3e3d3d
+  @include boxShadow
+  @include textShadow
+.btn:hover
+  background-color: white
+  cursor: pointer
+.btn:active
+  background-color: #d1dad9
+.btn-panel
+  display: flex
+  margin: 30px 0 0 0
+
+.selector-panel-btn
+  width: 20%
+  margin: auto auto 20px
+
+.footer-content
+  width: 1000px
+  margin: auto
+  height: 100%
+
+.footer-content-info
+  width: 50%
+  padding: 20px 0 0 0
+  display: inline-block
+  text-align: justify
+.footer-text
+  padding: 10px
+  color: $color2
+
+.spoiler-title
+  color: $color3
+  padding-top: 10px
+  padding-left: 40px
+  background-color: #f5f5f5
+  border-radius: 10px
+  height: 30px
+  cursor: pointer
+  opacity: 0.6
+.spoiler-title:hover
+  background-color: #efefef
+
+.neckBoard
+  border: 1px solid #b7b7b7
+  border-radius: 10px
+  margin: 10px 0 10px 0
+
+.neckBoard[open]
+  .spoiler-title
+    border-bottom-left-radius: 0
+    border-bottom-right-radius: 0
+
+

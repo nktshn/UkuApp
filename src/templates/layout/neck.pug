@@ -1,0 +1,9 @@
+div.neck#neckboard
+    div.whatIsBeforeNeck
+    - for (var x = 0; x < 10; x++)
+        div.lad(style='margin-left: ' + (70 * x)+'px')
+    - for (var x = 1; x < 5; x++)
+        div.str(class='str' + x)
+    div.points
+        - for (var x = 0; x < 2; x++)
+          div.point(class='point' + x)

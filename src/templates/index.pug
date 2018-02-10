@@ -1,0 +1,15 @@
+extends layout/layout.pug
+
+block CONTENT
+    include layout/VARS
+    block args
+        - var title = 'Home'
+        - var onLoadFunc = ''
+    div.content
+        p.desc Some description of this project. Another words to describe this project. Enjoy the description!
+        div.menu
+            - for (var x = 0; x < menuItems.length; x++)
+              a.menu-item-link(href=menuItems[x].replace(' ', '-') + '.html'): div.menu-item
+                  div.menu-item-hover-block
+                  span.menu-item-title= menuItems[x]
+                  img.menu-img(src="./images/" + menuItems[x].replace(' ', '-') + '.png', width=200, height=200)
