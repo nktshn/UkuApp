@@ -20,3 +20,12 @@ function x584() {
     }
 }
 
+function findMaxInArray(arr) {
+    var i = arr[0];
+    for (var x = 1; x < arr.length; x++) {
+        if (arr[x] > i) {
+            i = arr[x];
+        }
+    }
+    return i;
+}

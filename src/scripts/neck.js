@@ -38,6 +38,9 @@ var notesColors = {
     "B": "#ca60db",
     "Bb": "#827cdb"
 };
+
+var fullScaleMap = {};
+
 function formNeckIndexer() {
     var counter = 0;
     for (var x = 0; x < 40; x++) {
@@ -88,10 +91,11 @@ function showByNeckClick(num) {
     e[0].setAttribute('onclick', 'hideByNeckClick(' + e[0].getAttribute('name') + ')');
     var cs = document.getElementsByClassName('scale-checkbox');
     for (var x = 0; x < cs.length; x++) {
-        if (cs[x].getAttribute('value') ===  neckIndexer[num]) {
+        if (cs[x].getAttribute('value') === neckIndexer[num]) {
             cs[x].checked = true;
         }
     }
+    suggestScale();
 }
 
 function hideByNeckClick(num) {
@@ -100,10 +104,11 @@ function hideByNeckClick(num) {
     e[0].setAttribute('onclick', 'showByNeckClick(' + e[0].getAttribute('name') + ')');
     var cs = document.getElementsByClassName('scale-checkbox');
     for (var x = 0; x < cs.length; x++) {
-        if (cs[x].getAttribute('value') ===  neckIndexer[num]) {
+        if (cs[x].getAttribute('value') === neckIndexer[num]) {
             cs[x].checked = false;
         }
     }
+    suggestScale();
 }
 
 function showNotes(note) {
@@ -114,6 +119,7 @@ function showNotes(note) {
         neckBorderPoses[item].style.opacity = 0.9;
         neckBorderPoses[item].setAttribute('onclick', 'hideByNeckClick(' + neckBorderPoses[item].getAttribute('name') + ')');
     });
+    suggestScale();
 }
 
 
@@ -124,6 +130,7 @@ function hideNotes(note) {
         neckBorderPoses[item].style.opacity = 0;
         neckBorderPoses[item].setAttribute('onclick', 'showByNeckClick(' + neckBorderPoses[item].getAttribute('name') + ')');
     });
+    suggestScale();
 
 }
 
@@ -144,6 +151,7 @@ function clearNotes() {
 function NECK_START() {
     notesInit();
     formNeckIndexer();
+    formFullScaleMap();
 }
 
 function selectAll() {
@@ -152,4 +160,84 @@ function selectAll() {
         cs[y].checked = true;
     }
     show();
+}
+
+function suggestScale() {
+    var field = document.getElementById('position-scale-suggestion');
+    var cs = document.getElementsByClassName('scale-checkbox');
+    var checkedLength = 0;
+    var checkedNotes = [];
+    for (var y = 0; y < cs.length; y++) {
+        if (cs[y].checked) {
+            checkedLength++;
+            checkedNotes.push(cs[y].value);
+        }
+    }
+    var text = "Suggested scale: ";
+    if (checkedLength > 3 && checkedLength < 8) {
+        var suggestedScales = [];
+        var scaleAndWeight = [];
+        //logic:
+        for (var scale in fullScaleMap) {
+            scaleAndWeight.push([scale, compareNotesOfScale(fullScaleMap[scale], checkedNotes)]);
+        }
+        var overlapValues = [];
+        scaleAndWeight.forEach( function (item) {
+           overlapValues.push(item[1]);
+        });
+        var max = findMaxInArray(overlapValues);
+        scaleAndWeight.forEach(function (item) {
+           if (item[1] === max) {
+               suggestedScales.push(item[0]);
+           }
+        });
+        C(suggestedScales);
+        field.innerHTML = text + " " + suggestedScales;
+    } else {
+        field.innerHTML = text + "(choose between 4 and 7 notes)";
+    }
+}
+
+function formMinorScale(formedRoot) {
+    var scale = [];
+    scale.push(formedRoot[0]);
+    scale.push(formedRoot[2]);
+    scale.push(formedRoot[3]);
+    scale.push(formedRoot[5]);
+    scale.push(formedRoot[7]);
+    scale.push(formedRoot[8]);
+    scale.push(formedRoot[10]);
+    return scale;
+}
+
+function formMajorScale(formedRoot) {
+    var scale = [];
+    scale.push(formedRoot[0]);
+    scale.push(formedRoot[2]);
+    scale.push(formedRoot[4]);
+    scale.push(formedRoot[5]);
+    scale.push(formedRoot[7]);
+    scale.push(formedRoot[9]);
+    scale.push(formedRoot[11]);
+    return scale;
+}
+
+function formFullScaleMap() {
+    roots.forEach( function (key) {
+        var newRoot = formNewRoot(key);
+        fullScaleMap[key] = formMajorScale(newRoot);
+        fullScaleMap[key+"m"] = formMinorScale(newRoot);
+    });
+}
+
+function compareNotesOfScale(scaleArray, checkedNotes){
+    var counter = 0;
+    for (var i = 0; i < checkedNotes.length; i++) {
+        for (var j = 0; j < scaleArray.length; j++) {
+            if (checkedNotes[i] === scaleArray[j]) {
+                counter++;
+            }
+        }
+    }
+    return counter;
 }
