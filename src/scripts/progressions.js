@@ -77,3 +77,27 @@ function formMajorChords(formedRoot) {
     chords.push(formedRoot[11] + 'dim');
     return chords;
 }
+
+function renderPopProgressions() {
+    var scale = document.querySelector('input[name="scaleRadio"]:checked').value;
+    var parent = 'progression-board';
+    document.getElementById(parent).innerHTML = '';
+    var progs = [];
+    if (scale[1] === 'm' || scale[2]=== 'm') {
+        //minor
+        popularProgressions.inMinor.forEach(function (item) {
+           progs.push(formProgression(scale.slice(0, -1), 'min', item))
+        })
+    } else {
+        //major
+        popularProgressions.inMajor.forEach(function (item) {
+            progs.push(formProgression(scale, 'maj', item))
+        })
+    }
+    progs.forEach(function (item) {
+        document.getElementById(parent).appendChild(document.createElement('hr'));
+        item.forEach(function (i) {
+            renderChordNeck(i.toString(), parent)
+        })
+    })
+}

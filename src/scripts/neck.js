@@ -146,6 +146,7 @@ function clearNotes() {
     for (var y = 0; y < cs.length; y++) {
         cs[y].checked = false;
     }
+    suggestScale();
 }
 
 function NECK_START() {
@@ -173,7 +174,7 @@ function suggestScale() {
             checkedNotes.push(cs[y].value);
         }
     }
-    var text = "Suggested scale: ";
+    var text = "Suggested scales: ";
     if (checkedLength > 3 && checkedLength < 8) {
         var suggestedScales = [];
         var scaleAndWeight = [];
@@ -191,7 +192,7 @@ function suggestScale() {
                suggestedScales.push(item[0]);
            }
         });
-        C(suggestedScales);
+        //end_logic
         field.innerHTML = text + " " + suggestedScales;
     } else {
         field.innerHTML = text + "(choose between 4 and 7 notes)";

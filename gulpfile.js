@@ -29,7 +29,7 @@ gulp.task('makePugs', function () {
 });
 
 gulp.task('makeImages', function () {
-    return gulp.src('./src/img/*.*')
+    return gulp.src('./src/images/*.*')
         .pipe(gulp.dest('./build/images'))
 });
 

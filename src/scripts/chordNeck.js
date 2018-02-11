@@ -44,6 +44,9 @@ function chordNeckStart() {
     addChordIntoChordMap("F#dim", [{x: 0, y: 1}, {x: 1, y: 3}, {x: 2, y: 1}, {x: 3, y: 3}], null, 0, 'dim');
     addChordIntoChordMap("Gdim", [{x: 0, y: 2}, {x: 1, y: 4}, {x: 2, y: 2}, {x: 3, y: 1}], null, 0, 'dim');
     addChordIntoChordMap("G#dim", [{x: 0, y: 3}, {x: 1, y: 5}, {x: 2, y: 3}, {x: 3, y: 2}], null, 0, 'dim');
+
+}
+function renderAllChords() {
     //rendering:
     majorScales.forEach(function (item) {
         renderFullNeckForScale(formProgression(item, 'maj', arrayInRange(1, 7)), item);
@@ -60,13 +63,13 @@ function renderFullNeckForScale(prog, scale) {
     })
 }
 
-function renderChordNeck(chord, boardIndex) {
-    createChordNeck(chord, fullChordMap[chord].startPos, boardIndex);
+function renderChordNeck(chord, boardId) {
+    createChordNeck(chord, fullChordMap[chord].startPos, boardId);
 }
 
-function createChordNeck(chord, startPos, boardIndex) {
-    //C(boardIndex);
-    var parent = document.getElementById(boardIndex);
+function createChordNeck(chord, startPos, boardId) {
+    //C(boardId);
+    var parent = document.getElementById(boardId);
     var neck = document.createElement('div');
     neck.setAttribute('class', 'chordNeck');
     parent.appendChild(neck);

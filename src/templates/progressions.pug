@@ -1,10 +1,18 @@
 extends layout/layout.pug
 block args
     - var title = 'Progressions'
-    - var onLoadFunc = ', progressions_init()'
+    - var onLoadFunc = ', progressions_init(), chordNeckStart()'
+    - var scaleRoots = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B","Cm", "C#m", "Dm", "D#m", "Em", "Fm", "F#m", "Gm", "G#m", "Am", "A#m", "Bm"];
 block CONTENT
     div.content
         h2 Progressions
         p.pageDesc= footerDesc
+        div.scale-selector
+            p.info-text Choose the scale below to look at popular progressions in the scale
+            - for (var x = 0; x < scaleRoots.length; x++)
+              div.checkbox
+                 input(class='scale-checkbox', type='radio', name='scaleRadio', value = scaleRoots[x], onclick='renderPopProgressions()')
+                 span(class='scale-checkbox-label')=scaleRoots[x]
+        div#progression-board(style="text-align: center")
 
 

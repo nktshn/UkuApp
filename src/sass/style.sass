@@ -6,6 +6,10 @@ $color4: #ececec
 $color5: #495970
 $font: "SF UI  Text Light", monospace
 
+//@font-face
+//  font-family: "SF UI  Text Light"
+//  src: url('./fonts/sfui.tff');
+
 @mixin boxShadow
   box-shadow: 0 0 15px -2px grey
 @mixin textShadow
@@ -70,6 +74,7 @@ h3
 
 h2, h3
   @include textShadow
+
 .pageDesc
   padding: 0 40px 40px 40px
   margin: 0
@@ -87,6 +92,10 @@ main
   margin-bottom: 50px
   min-height: calc(100vh - #{$footerHeight})
 
+hr
+  height: 1px
+  background-color: $color2
+
 .wrap
   @include boxShadow
   padding: 0
@@ -103,6 +112,7 @@ main
   color: $color4
   font-size: 48px
 
+
 .logotext:hover
   @include textShadow
   cursor: pointer
@@ -113,9 +123,8 @@ main
 
 .content
   padding: 40px 30px 60px 30px
-  background-color: $color4
   min-height: 60vh
-  background: $color1 url('../images/background.jpg') -390px -410px no-repeat
+  background: $color4 url('../images/background.jpg')
   background-size: 2000px 2000px
 
 .desc, .position-scale-suggestion
@@ -163,12 +172,15 @@ main
   display: inline-block
   position: relative
   margin-right: 15px
+  margin-bottom: 20px
 
 .scale-selector
-  width: 600px
+  width: 620px
   margin: auto
   display: block
   padding-bottom: 30px
+  text-align: center
+  padding-left: 15px
 
 .scale-checkbox
   -webkit-appearance: none
@@ -252,4 +264,6 @@ main
     border-bottom-left-radius: 0
     border-bottom-right-radius: 0
 
-
+.info-text
+  color: $color3
+  margin: 10px 0 10px 0

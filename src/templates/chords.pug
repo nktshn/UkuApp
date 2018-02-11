@@ -1,7 +1,7 @@
 extends layout/layout.pug
 block args
     - var title = 'Chords'
-    - var onLoadFunc = ', chordNeckStart()'
+    - var onLoadFunc = ', chordNeckStart(), renderAllChords()'
 block CONTENT
     div.content
         h2 Chords training
