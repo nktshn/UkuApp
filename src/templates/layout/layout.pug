@@ -5,14 +5,15 @@ html(lang='en')
         block args
         title= title + " | UkuApp"
         link(rel='stylesheet', href='./styles/style.css')
-        script(src='./scripts/all.js')
+
     body(onload=('menuHighlighting(' + "'" + title + "'" + ')' + onLoadFunc))
         main
             header
-                div.logo
-                    img(src="./images/logo.png", alt="logo", height=70, width=170)
-                a.logotext-link(href='/')
-                    span.logotext UkuApp
+                a(href= '/').logo-link
+                    div.logo
+                        //img(src="./images/logo.png", alt="logo", height=70, width=170)
+                    //a.logotext-link(href='/')
+                        span.logotext UkuApp
             nav
                 ul
                     a(href= '/'): li(name='navli')= 'Home'
@@ -27,3 +28,4 @@ html(lang='en')
                     p.footer-text=footerDesc
                 div.footer-content-info
                     p.footer-text=footerDesc
+    script(src='./scripts/all.js')

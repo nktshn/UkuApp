@@ -1,0 +1,22 @@
+extends layout/layout.pug
+block args
+    - var title = 'Transpose'
+    - var onLoadFunc = ', transpose_init()'
+    - var scaleRoots = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B","Cm", "C#m", "Dm", "D#m", "Em", "Fm", "F#m", "Gm", "G#m", "Am", "A#m", "Bm"];
+block CONTENT
+    div.content
+        h2 Transpose
+        p.pageDesc=descriptions.transpose
+        div.prog-board
+            select.transpose-chord-selector
+                each val in scaleRoots
+                    option(value=val)=val
+        button(class="prog-board-add-btn prog-board-btn", onclick="addChordToTranspose()") Add Chord
+        div.prog-board-chords
+        button.prog-board-btn(onclick="up()")= "/\\"
+        button.prog-board-btn(onclick="down()")= "\\/"
+        button.prog-board-btn(onclick="clearProg()")= "Clear Progression"
+
+
+
+

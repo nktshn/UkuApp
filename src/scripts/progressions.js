@@ -2,7 +2,8 @@ var popularProgressions = {
     inMajor: [
         [1, 5, 6, 4],//chaperone
         [1, 4, 6, 5],//goner
-        [1, 2, 6, 4]//ride
+        [1, 2, 6, 4],//ride
+        [1, 5, 2, 4]
     ],
     inMinor: [
         [1, 4, 6, 7],//shape of you
@@ -11,8 +12,8 @@ var popularProgressions = {
         [6, 4, 1, 1],//stressed out
         [1, 7, 6, 3],//stressed out
         [5, 4, 1, 1],//
-        [1, 3, 7 ,6],//counting stats
-        [1, 7, 3 ,6]//
+        [1, 3, 7, 6],//counting stats
+        [1, 7, 3, 6]
     ]
 };
 
@@ -34,7 +35,7 @@ function formProgression(root, scale, progression) { //['C'], ['min'], [1, 3, 5,
     }
     //C(chords);
     for (var x = 0; x < progression.length; x++) {
-        newProg[x] = chords[progression[x]-1];
+        newProg[x] = chords[progression[x] - 1];
     }
     //C(newProg);
     return newProg;
@@ -83,10 +84,10 @@ function renderPopProgressions() {
     var parent = 'progression-board';
     document.getElementById(parent).innerHTML = '';
     var progs = [];
-    if (scale[1] === 'm' || scale[2]=== 'm') {
+    if (scale[1] === 'm' || scale[2] === 'm') {
         //minor
         popularProgressions.inMinor.forEach(function (item) {
-           progs.push(formProgression(scale.slice(0, -1), 'min', item))
+            progs.push(formProgression(scale.slice(0, -1), 'min', item))
         })
     } else {
         //major
@@ -95,9 +96,10 @@ function renderPopProgressions() {
         })
     }
     progs.forEach(function (item) {
-        document.getElementById(parent).appendChild(document.createElement('hr'));
         item.forEach(function (i) {
             renderChordNeck(i.toString(), parent)
-        })
+        });
+        document.getElementById(parent).appendChild(document.createElement('hr'));
     })
 }
+

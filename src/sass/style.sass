@@ -93,6 +93,7 @@ main
   min-height: calc(100vh - #{$footerHeight})
 
 hr
+  border: 0
   height: 1px
   background-color: $color2
 
@@ -105,21 +106,38 @@ hr
 
 
 .logo
+  height: 100%
+  width: 250px
   display: inline-block
   margin: 0 0 0 20px
+  background: url("../images/logo.png") no-repeat
+  background-size: 285px 100px
+  background-position-y: -10px
+  background-position-x: -40px
+  transition: 100ms ease-out all
 
-.logotext
-  color: $color4
-  font-size: 48px
-
-
-.logotext:hover
-  @include textShadow
+.logo:hover
+  background: url("../images/logo-hover.png") no-repeat
   cursor: pointer
+  background-size: 285px 100px
+  background-position-y: -10px
+  background-position-x: -40px
+  transform: scale(1.1)
+  transition: 100ms ease-out all
 
-.logotext-link
-  display: inline
-  padding-top: 7px
+//.logotext
+//  color: $color4
+//  font-size: 48px
+//
+//
+//
+//.logotext:hover
+//  @include textShadow
+//  cursor: pointer
+//
+//.logotext-link
+//  display: inline
+//  padding-top: 7px
 
 .content
   padding: 40px 30px 60px 30px
@@ -202,7 +220,7 @@ hr
 .scale-checkbox-label
   position: absolute
   top: 32px
-  left: 0
+  left: 1px
   width: 35px
   text-align: center
   color: $color3
@@ -267,3 +285,6 @@ hr
 .info-text
   color: $color3
   margin: 10px 0 10px 0
+
+
+
