@@ -7,7 +7,7 @@
     "test": "node index.js"
   },
   "author": "me",
-  "license": "no",
+  "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.23.6",
     "gulp": "^3.9.1",

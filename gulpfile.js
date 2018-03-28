@@ -5,7 +5,7 @@ var browserSync = require('browser-sync').create();
 var concatCss = require('gulp-concat-css');
 var jsConcat = require('gulp-concat');
 var AP = require('gulp-autoprefixer');
-var javascriptObfuscator = require('gulp-javascript-obfuscator');
+//var javascriptObfuscator = require('gulp-javascript-obfuscator');
 
 gulp.task('default', function () {
     browserSync.init({

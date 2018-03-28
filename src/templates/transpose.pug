@@ -8,14 +8,19 @@ block CONTENT
         h2 Transpose
         p.pageDesc=descriptions.transpose
         div.prog-board
-            select.transpose-chord-selector
+            select(class="transpose-chord-selector btn")
                 each val in scaleRoots
                     option(value=val)=val
-        button(class="prog-board-add-btn prog-board-btn", onclick="addChordToTranspose()") Add Chord
+        button(class="prog-board-add-btn prog-board-btn btn", onclick="addChordToTranspose()") Add Chord
+        button(class="prog-board-add-btn prog-board-btn btn", onclick="addSeparator()") Add Separator
+        div.control-panel-btns
+            button(class="prog-board-btn btn", onclick="up()")= "/\\"
+            button(class="prog-board-btn btn", onclick="down()")= "\\/"
+            span.pageDesc#transposing-counter Transposing counter: 0
+            button(class="prog-board-btn btn", onclick="clearProg()")= "Clear Progression"
+            button(class="prog-board-btn btn", onclick="relax()")= "RELAX"
         div.prog-board-chords
-        button.prog-board-btn(onclick="up()")= "/\\"
-        button.prog-board-btn(onclick="down()")= "\\/"
-        button.prog-board-btn(onclick="clearProg()")= "Clear Progression"
+
 
 
 
