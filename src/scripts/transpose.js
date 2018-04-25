@@ -81,6 +81,7 @@ function renderProg() {
     }
     elems.forEach(function (elem, index) {
         parent.appendChild(elem);
+
         //rendering X marks:
         var xMark = document.createElement('div');
         xMark.setAttribute('class', 'x-mark');
