@@ -5,6 +5,7 @@ html(lang='en')
         block args
         title= title + " | UkuApp"
         link(rel='stylesheet', href='./styles/style.css')
+        link(rel="author" href="https://github.com/nktshn") 
 
     body(onload=('menuHighlighting(' + "'" + title + "'" + ')' + onLoadFunc))
         main
@@ -23,6 +24,29 @@ html(lang='en')
             div.footer-content
                 div.footer-content-info
                     p.footer-text Contact info:
+                    div.vcard
+                        div.fn Nikita Shishin
+                        div.org OmSTU
+                            div
+                                // begin ASOIU
+                                a(href= "http://asoiu.com/", target="_blank", title="Официальный сайт кафедры АСОИУ ОмГТУ")="ASOIU"
+                                // end ASOIU
+                        div.tel +7(777)777-77-77
+                        a(href= "https://github.com/nktshn", target="_blank").url github.com/nktshn
                 div.footer-content-info
-                    p.footer-text Description
+                    // LiveInternet counter
+                    script.
+                        document.write("<a href='//www.liveinternet.ru/click' "+
+                        "target=_blank><img src='//counter.yadro.ru/hit?t52.11;r"+
+                        escape(document.referrer)+((typeof(screen)=="undefined")?"":
+                        ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+                        screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+                        ";h"+escape(document.title.substring(0,150))+";"+Math.random()+
+                        "' alt='' title='LiveInternet: показано число просмотров и"+
+                        " посетителей за 24 часа' "+
+                        "border='0' width='88' height='31'><\/a>")
+                    // LiveInternet
+                    div.mailru 
+                        a(target="_blank", class="mrc__plugin_like_button", href="https://connect.mail.ru/share", data-mrc-config="{'cm' : '1', 'sz' : '20', 'st' : '1', 'tp' : 'mm'}") Мне нравится
+                        script(src="https://connect.mail.ru/js/loader.js", type="text/javascript" charset="UTF-8")
     script(src='./scripts/all.js')

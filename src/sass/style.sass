@@ -86,7 +86,8 @@ h2, h3
 
 $footerHeight: 250px
 footer
-  height: 250px
+  height: 100%
+  padding-bottom: 20px
   background-color: $color5
 
 main
@@ -248,15 +249,24 @@ hr
   margin: auto auto 20px
 
 .footer-content
-  width: 1000px
-  margin: auto
-  height: 100%
+    width: 1000px
+    display: flex
+    justify-content: space-between
+    margin: auto
+    p
+        padding: 0px 0 10px 0
 
 .footer-content-info
   width: 50%
   padding: 20px 0 0 0
   display: inline-block
   text-align: justify
+  
+.footer-content-info:last-child 
+  display: flex
+  flex-direction: column
+  align-items: flex-end
+  justify-content: flex-end
 .footer-text
   padding: 10px
   color: $color2
@@ -287,5 +297,13 @@ hr
   color: $color3
   margin: 10px 0 10px 0
 
+.vcard
+  color: white
+  text-decoration: none
+  a
+    color: white
+    text-decoration-line: underline
+    text-shadow: none
 
-
+.mailru
+  max-width: 103px

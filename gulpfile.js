@@ -5,6 +5,7 @@ var browserSync = require('browser-sync').create();
 var concatCss = require('gulp-concat-css');
 var jsConcat = require('gulp-concat');
 var AP = require('gulp-autoprefixer');
+var sitemap = require('gulp-sitemap');
 //var javascriptObfuscator = require('gulp-javascript-obfuscator');
 
 gulp.task('default', function () {
@@ -57,7 +58,18 @@ gulp.task('makeJs', function () {
         .pipe(gulp.dest('./build/scripts/'))
 });
 
-gulp.task('build', ['makePugs', 'makeImages', 'makeSass', 'makeJs'], function () {
+gulp.task('sitemap', function () {
+    return gulp.src('build/**/*.html', {
+            read: false,
+        })
+        .pipe(sitemap({
+            siteUrl: 'https://ukuapp.github.io',
+            priority: "1.0"
+        }))
+        .pipe(gulp.dest('./build'));
+});
+
+gulp.task('build', ['makePugs', 'makeImages', 'makeSass', 'makeJs', 'sitemap'], function () {
     browserSync.reload();
 });
 
